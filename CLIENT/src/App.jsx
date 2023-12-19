@@ -1,41 +1,41 @@
-import {Navigate, RouterProvider, createBrowserRouter} from 'react-router-dom'
-import Layout from './pages/Layout';
-import Home from './pages/Home';
-import AddNote from './pages/AddNote';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import useAuth from './hooks/useAuth';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+  useNavigate,
+} from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import AddNote from "./pages/AddNote";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import useAuth from "./hooks/useAuth";
 
-
-export default function App(){
-  const {user} = useAuth();
+export default function App() {
+  const { user } = useAuth();
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: "",
-          element: <Home/>
+          element: user ? <Home /> : <Navigate to="/login" />,
         },
         {
           path: "addnote",
-          element: <AddNote/>
+          element: user ? <AddNote /> : <Navigate to="/login" />,
         },
         {
           path: "login",
-          element: <Login/>
+          element: <Login />,
         },
         {
           path: "signup",
-          element: <Signup/>
-        }
-      ]
-    }
-  ])
-  return (
-    
-      <RouterProvider router={router}></RouterProvider>
-   
-  )
+          element: <Signup />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router}></RouterProvider>;
 }
