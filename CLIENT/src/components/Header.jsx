@@ -30,6 +30,15 @@ function Header() {
             >
               Home
             </NavLink>
+            {user && (
+              <NavLink
+                to="/mynotes"
+                className="nav-link"
+                style={{ fontFamily: "Poppins" }}
+              >
+                My Notes
+              </NavLink>
+            )}
             <NavLink
               to="/addnote"
               className="nav-link"

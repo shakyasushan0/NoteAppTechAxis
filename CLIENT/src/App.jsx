@@ -10,6 +10,7 @@ import AddNote from "./pages/AddNote";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import useAuth from "./hooks/useAuth";
+import MyPost from "./pages/MyPost";
 
 export default function App() {
   const { user } = useAuth();
@@ -33,6 +34,10 @@ export default function App() {
         {
           path: "signup",
           element: <Signup />,
+        },
+        {
+          path: "mynotes",
+          element: <MyPost />,
         },
       ],
     },
