@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 const Home = () => {
   const [notes, setNotes] = useState([]);
   async function getNotes() {
-    const resp = await fetch("http://localhost:3000/api/notes/public");
+    const resp = await fetch("http://localhost:3000/api/notes");
     const data = await resp.json();
     console.log(data);
     setNotes(data);

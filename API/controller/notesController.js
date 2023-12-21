@@ -42,7 +42,7 @@ exports.updateNotes = async (req, res) => {
     { $set: req.body },
     { new: true }
   );
-  res.send({ msg: "Note updated", updatedNote });
+  res.send({ msg: "Note updated", status: 200, updatedNote });
 };
 
 exports.deleteNotes = async (req, res) => {
